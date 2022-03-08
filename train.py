@@ -56,7 +56,7 @@ def main():
     # "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
 
     data_url = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
-    ds = TabularDatasetFactory.from_delimited_files(data_url, seperator= ',', header=True, encoding-'utf8')
+    ds = TabularDatasetFactory.from_delimited_files(data_url)
     
     x, y = clean_data(ds)
 
