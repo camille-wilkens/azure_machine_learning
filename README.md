@@ -13,11 +13,9 @@ This model is then compared to an Azure AutoML run.
 
 
 ## Summary
-**"This dataset contains data about a bank's marketing campaign and the goal of the campaign is to get new customers to sign up for a product.  
+**"This project is based on a bank's marketing campaign and the goal of this project is to predict if a "potential" client will become a new customer.  The dataset used in this project contains data about a bank's marketing campaign including demographic information.  
 
-is to predict if a bank's marketing campaign to get new customers to sign up for a new product   "potential" client will become a new customer "**
-
-**In 1-2 sentences, explain the solution: e.g. "The best performing model was a ..."**
+**The best performing model was a ..."**
 
 ## Scikit-learn Pipeline
 **Explain the pipeline architecture, including data, hyperparameter tuning, and classification algorithm.**
