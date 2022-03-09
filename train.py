@@ -1,3 +1,10 @@
+
+#https://knowledge.udacity.com/questions/800388 
+# Started gettting a no pandas found error, this KB resolved the issue
+import sys
+import subprocess
+subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'pandas'])
+
 from sklearn.linear_model import LogisticRegression
 import argparse
 import os
