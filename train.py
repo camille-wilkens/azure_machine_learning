@@ -1,10 +1,4 @@
 
-#https://knowledge.udacity.com/questions/800388 
-# Started gettting a no pandas found error, this KB resolved the issue
-import sys
-import subprocess
-subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'pandas'])
-
 from sklearn.linear_model import LogisticRegression
 import argparse
 import os
@@ -13,7 +7,14 @@ from sklearn.metrics import mean_squared_error
 import joblib
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder
+
+#https://knowledge.udacity.com/questions/800388 
+# Started gettting a no pandas found error, this KB resolved the issue
+import sys
+import subprocess
+subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'pandas'])
 import pandas as pd
+
 from azureml.core.run import Run
 from azureml.data.dataset_factory import TabularDatasetFactory
 
@@ -73,7 +74,7 @@ def main():
     
     x_train, x_test, y_train, y_test = train_test_split(x,y,test_size = .20, random_state = 10)
 
-    model = LogisticRegression(C=args.C, max_iter=args.max_iter).fit(x_train, y_train)
+    model = LogisticRegression(C=args.C,max_iter=args.max_iter).fit(x_train, y_train)
 
     accuracy = model.score(x_test, y_test)
     run.log("accuracy", np.float(accuracy))
