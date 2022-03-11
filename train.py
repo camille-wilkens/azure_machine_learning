@@ -9,10 +9,11 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder
 
 #https://knowledge.udacity.com/questions/800388 
-# Started gettting a no pandas found error, this KB resolved the issue
-#import sys
-#import subprocess
-#subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'pandas'])
+# No pandas found error, this KB resolved the issue
+
+import sys
+import subprocess
+subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'pandas'])
 import pandas as pd
 
 from azureml.core.run import Run
