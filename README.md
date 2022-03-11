@@ -1,8 +1,8 @@
 # Optimizing an ML Pipeline in Azure
 
 ## Overview
-This project is part of the Udacity Azure ML Nanodegree.
-In this project, we build and optimize an Azure ML pipeline using the Python SDK and a provided Scikit-learn model.
+This project is part of the Udacity Azure Machine Learning (ML) Nanodegree.
+In this project, I built and optimized an Azure ML pipeline using the Python SDK and a provided Scikit-learn model.
 This model is then compared to an Azure AutoML run.
 
 ## Useful Resources
@@ -13,9 +13,9 @@ This model is then compared to an Azure AutoML run.
 
 
 ## Summary
-**"This project is based on a bank's marketing campaign and the goal of this project is to predict if a "potential" client will become a new customer.  The dataset used in this project contains data about a bank's marketing campaign including demographic information.  
+This project is based on a bank's marketing campaign and the goal of this project is to predict if a "potential" client will become a new customer.  The dataset used in this project contains data about a bank's marketing campaign including demographic information.  
 
-**The best performing model was a ..."**
+Azure AutoML produced the best performing model which was VotingEnsemble with an accurary .91756
 
 ## Scikit-learn Pipeline
 **Explain the pipeline architecture, including data, hyperparameter tuning, and classification algorithm.**
