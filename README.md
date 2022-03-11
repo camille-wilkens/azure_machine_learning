@@ -13,12 +13,18 @@ This model is then compared to an Azure AutoML run.
 
 
 ## Summary
-This project is based on a bank's marketing campaign and the goal of this project is to predict if a "potential" client will become a new customer.  The dataset used in this project contains data about a bank's marketing campaign including demographic information.  
+This project is based on a bank's marketing campaign and the goal of this project is to predict if a "potential" client will become a new customer of a bank product offering.  The dataset used in this project contains data about a bank's marketing campaign including demographic information.  
 
 Azure AutoML produced the best performing model which was VotingEnsemble with an accurary .91756
 
 ## Scikit-learn Pipeline
+
 **Explain the pipeline architecture, including data, hyperparameter tuning, and classification algorithm.**
+**** Pipeline Architecture
+** Prepare Data
+   Download the dataset [Data](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) and convert into   TabularDatasetFactory dataset.
+   Clean the dataset (remove 
+   
 
 **What are the benefits of the parameter sampler you chose?**
 
