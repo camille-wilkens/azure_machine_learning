@@ -13,7 +13,7 @@ This model is then compared to an Azure AutoML run.
 
 
 ## Summary
-This project is based on a bank's marketing campaign and the goal of this project is to predict if a "potential" client will become a new customer of a bank product offering.  The dataset used in this project contains data about a bank's marketing campaign including demographic information.  
+This project is based on a bank's marketing campaign and the goal of this project is to predict if a customer will sign up for a term deposit.  The dataset used in this project contains data about a bank's marketing campaign including demographic information.  
 
 Azure AutoML produced the best performing model which was VotingEnsemble with an accurary .91756
 
@@ -23,7 +23,9 @@ Azure AutoML produced the best performing model which was VotingEnsemble with an
 **** Pipeline Architecture
 ** Prepare Data
    Download the dataset [Data](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) and convert into   TabularDatasetFactory dataset.
-   Clean the dataset (remove 
+   Clean the dataset
+   Split data into training and test sets (80/20)
+   Utilize a Scikit-learn Logistic Regression Model for Classification
    
 
 **What are the benefits of the parameter sampler you chose?**
