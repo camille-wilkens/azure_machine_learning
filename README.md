@@ -23,26 +23,28 @@ Azure AutoML produced the best performing model which was VotingEnsemble with an
 
 ## Scikit-learn Pipeline<a name="pipeline"></a>
 
-**Explain the pipeline architecture, including data, hyperparameter tuning, and classification algorithm.**
-**** Pipeline Architecture
-** Prepare Data
-   Download the dataset [Data](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) and convert into   TabularDatasetFactory dataset.
-   Clean the dataset (clean_data located in train.py)
-   Split data into training and test sets (80/20)
-   Utilize a Scikit-learn Logistic Regression Model for Classification
+** Pipeline Architecture
+	* Prepare Data
+   	* Download the dataset [Data](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) and convert into   TabularDatasetFactory dataset.
+   	* Clean the dataset (clean_data located in train.py)
+   	* Split data into training and test sets (80/20)
+   	* Utilize a Scikit-learn Logistic Regression Model for Classification
    
 ** Hyperparamater Tuning
 
    hyperdrive_config = HyperDriveConfig (
-           hyperparameter_sampling=RandomParameterSampling(
+        * hyperparameter_sampling=RandomParameterSampling(
     		{"--C":choice(0.5,1.0),     
     		"--max_iter":choice(50,100,150)})  ,
-           primary_metric_goal=PrimaryMetricGoal.MAXIMIZE,
-           primary_metric_name='Accuracy',
-           policy=BanditPolicy(evaluation_interval=1, slack_factor=0.1),
-           max_total_runs=8, 
-           max_concurrent_runs=4,
-           estimator=SKLearn(source_directory='.', entry_script='train.py', compute_target=cluster_name))
+          primary_metric_goal=PrimaryMetricGoal.MAXIMIZE,
+          primary_metric_name='Accuracy',
+          policy=BanditPolicy(evaluation_interval=1, slack_factor=0.1),
+          max_total_runs=8, 
+          max_concurrent_runs=4,
+          estimator=SKLearn(source_directory='.', entry_script='train.py', compute_target=cluster_name))
+           
+ ** Classifcation Algorith
+ 	* Logistic Regression
    
 
 **Benefits of the parameter sampler chosen**
@@ -52,20 +54,22 @@ Azure AutoML produced the best performing model which was VotingEnsemble with an
   Bandit Policy is less resource intensive and time consuming. If a run's performance is outside the best run's performance metrics, if additional runs are outside the evaluation_interval and slack_factor, the run is early terminated -- saving time and resources.
 
 ## AutoML<a name="automl"></a>
-   Download the dataset [Data](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) and convert into   TabularDatasetFactory dataset.
-   Clean the dataset (clean_data located in train.py)
-   Split data into training and test sets (80/20)
-   Configure AutoML
-   Save Best Model
+   	* Download the dataset [Data](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) and convert into   TabularDatasetFactory dataset.
+   	* Clean the dataset (clean_data located in train.py)
+   	* Split data into training and test sets (80/20)
+   	* Configure AutoML
+   	* Save Best Model
 
 ## Pipeline comparison<a name="comparison"></a>
 ![Pipeline Comparison](pipeline.PNG)
-## Future work<a name="future"></a>
+
+
+## Future Work<a name="future"></a>
 **What are some areas of improvement for future experiments? Why might these improvements help the model?**
 
 ## Proof of cluster clean up<a name="clean"></a>
-**If you did not delete your compute cluster in the code, please complete this section. Otherwise, delete this section.**
-**Image of cluster marked for deletion**
+![Proof of Cluster Clean up](delete_compute_target.PNG)
+
 
 ## Useful Resources<a name="clean"></a>
 - [ScriptRunConfig Class](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py)
