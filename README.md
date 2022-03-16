@@ -49,7 +49,9 @@ estimator=SKLearn(source_directory='.', entry_script='train.py', compute_target=
   RandomParameterSampling supports continous and discrete hyperparamters.  It is also less resource intensive and time consuming.
 
 **Benefits of the early stopping policy chosen:**
-  Bandit Policy is less resource intensive and time consuming. If a run's performance is outside the best run's performance metrics, if additional runs are outside the evaluation_interval and slack_factor, the run is early terminated -- saving time and resources.
+  Bandit Policy is also less resource intensive and time consuming. 
+  
+  If a run's performance is outside the best run's slack_factor, the run is early terminated -- saving time and resources.
 
 ## AutoML<a name="automl"></a>
 * Download the dataset [Data](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) and convert into   TabularDatasetFactory dataset.
@@ -58,16 +60,33 @@ estimator=SKLearn(source_directory='.', entry_script='train.py', compute_target=
 * Configure AutoML
 * Save Best Model
 
+#### AutoML Config
+automl_config = AutoMLConfig(
+    experiment_timeout_minutes=30,
+    task= 'classification',
+    primary_metric='accuracy',
+    training_data= train_data,
+    label_column_name= 'y',
+    n_cross_validations= 4, compute_target = compute_target)
+    
+    
+#### Best Model 
+* VotingEnsemble with an accurary of 91.756%
+
 ## Pipeline comparison<a name="comparison"></a>
+AutoMl had the best accuary with VotingEnsemble - 91.756% and Hyperdrive recieved an an accuracy score of 90.94%.  AutoML was able to find the best alogrithm and hyper parameter settings to achieve the higher accuracy score 
 ![Pipeline Comparison](pipeline.PNG)
+
 ####Best Model Summary:
 ![Pipeline Comparison](best_model_summary.PNG)
+
 ####Best Model Statistics:
 ![Pipeline Comparison](best_model.PNG)
 
 
 ## Future Work<a name="future"></a>
-**What are some areas of improvement for future experiments? Why might these improvements help the model?**
+* Enable Onnx Compatible Models
+* Replace Deprecated SkLearn Estimator
 
 ## Proof of cluster clean up<a name="clean"></a>
 ![Proof of Cluster Clean up](delete_compute_target.PNG)
