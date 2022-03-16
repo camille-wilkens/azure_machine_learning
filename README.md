@@ -23,43 +23,40 @@ Azure AutoML produced the best performing model which was VotingEnsemble with an
 
 ## Scikit-learn Pipeline<a name="pipeline"></a>
 
-** Pipeline Architecture
-
-	* Prepare Data
-   	* Download the dataset [Data](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) and convert into TabularDatasetFactory dataset.
-	
-   	* Clean the dataset (clean_data located in train.py)
-   	* Split data into training and test sets (80/20)
-   	* Utilize a Scikit-learn Logistic Regression Model for Classification
+# Pipeline Architecture
+* Prepare Data
+* Download the dataset [Data](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) and convert into   TabularDatasetFactory dataset.
+* Clean the dataset (clean_data located in train.py)
+* Split data into training and test sets (80/20)
+* Utilize a Scikit-learn Logistic Regression Model for Classification
    
-** Hyperparamater Tuning
-
-   hyperdrive_config = HyperDriveConfig (
-        * hyperparameter_sampling=RandomParameterSampling(
-    		{"--C":choice(0.5,1.0), --max_iter":choice(50,100,150)})  ,
-          primary_metric_goal=PrimaryMetricGoal.MAXIMIZE,
-          primary_metric_name='Accuracy',
-          policy=BanditPolicy(evaluation_interval=1, slack_factor=0.1),
-          max_total_runs=8, 
-          max_concurrent_runs=4,
-          estimator=SKLearn(source_directory='.', entry_script='train.py', compute_target=cluster_name))
+# Hyperparamater Tuning
+hyperdrive_config = HyperDriveConfig (
+hyperparameter_sampling=RandomParameterSampling(
+{"--C":choice(0.5,1.0), --max_iter":choice(50,100,150)})  ,
+primary_metric_goal=PrimaryMetricGoal.MAXIMIZE,
+primary_metric_name='Accuracy',
+policy=BanditPolicy(evaluation_interval=1, slack_factor=0.1),
+max_total_runs=8, 
+max_concurrent_runs=4,
+estimator=SKLearn(source_directory='.', entry_script='train.py', compute_target=cluster_name))
            
- ** Classifcation Algorithim
- 	* Logistic Regression
+#Classifcation Algorithim
+* Logistic Regression
    
 
-**Benefits of the parameter sampler chosen**
+**Benefits of the parameter sampler chosen:**
   RandomParameterSampling supports continous and discrete hyperparamters.  It is also less resource intensive and time consuming.
 
-**Benefits of the early stopping policy chosen**
+**Benefits of the early stopping policy chosen:**
   Bandit Policy is less resource intensive and time consuming. If a run's performance is outside the best run's performance metrics, if additional runs are outside the evaluation_interval and slack_factor, the run is early terminated -- saving time and resources.
 
 ## AutoML<a name="automl"></a>
-   	* Download the dataset [Data](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) and convert into   TabularDatasetFactory dataset.
-   	* Clean the dataset (clean_data located in train.py)
-   	* Split data into training and test sets (80/20)
-   	* Configure AutoML
-   	* Save Best Model
+* Download the dataset [Data](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) and convert into   TabularDatasetFactory dataset.
+* Clean the dataset (clean_data located in train.py)
+* Split data into training and test sets (80/20)
+* Configure AutoML
+* Save Best Model
 
 ## Pipeline comparison<a name="comparison"></a>
 ![Pipeline Comparison](pipeline.PNG)
