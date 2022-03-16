@@ -24,8 +24,10 @@ Azure AutoML produced the best performing model which was VotingEnsemble with an
 ## Scikit-learn Pipeline<a name="pipeline"></a>
 
 ** Pipeline Architecture
+
 	* Prepare Data
-   	* Download the dataset [Data](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) and convert into   TabularDatasetFactory dataset.
+   	* Download the dataset [Data](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) and convert into TabularDatasetFactory dataset.
+	
    	* Clean the dataset (clean_data located in train.py)
    	* Split data into training and test sets (80/20)
    	* Utilize a Scikit-learn Logistic Regression Model for Classification
@@ -34,8 +36,7 @@ Azure AutoML produced the best performing model which was VotingEnsemble with an
 
    hyperdrive_config = HyperDriveConfig (
         * hyperparameter_sampling=RandomParameterSampling(
-    		{"--C":choice(0.5,1.0),     
-    		"--max_iter":choice(50,100,150)})  ,
+    		{"--C":choice(0.5,1.0), --max_iter":choice(50,100,150)})  ,
           primary_metric_goal=PrimaryMetricGoal.MAXIMIZE,
           primary_metric_name='Accuracy',
           policy=BanditPolicy(evaluation_interval=1, slack_factor=0.1),
@@ -43,7 +44,7 @@ Azure AutoML produced the best performing model which was VotingEnsemble with an
           max_concurrent_runs=4,
           estimator=SKLearn(source_directory='.', entry_script='train.py', compute_target=cluster_name))
            
- ** Classifcation Algorith
+ ** Classifcation Algorithim
  	* Logistic Regression
    
 
