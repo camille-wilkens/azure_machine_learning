@@ -41,7 +41,7 @@ max_total_runs=8,
 max_concurrent_runs=4,
 estimator=SKLearn(source_directory='.', entry_script='train.py', compute_target=cluster_name))
            
-####Classifcation Algorithim
+#### Classifcation Algorithim
 * Logistic Regression
    
 
@@ -76,10 +76,10 @@ AutoML had the best accuary with VotingEnsemble @ 91.756% and Hyperdrive receive
 
 ![Pipeline Comparison](pipeline.PNG)
 
-####Best Model Summary:
+#### Best Model Summary:
 ![Pipeline Comparison](best_model_summary.PNG)
 
-####Best Model Statistics:
+#### Best Model Statistics:
 ![Pipeline Comparison](best_model.PNG)
 
 
